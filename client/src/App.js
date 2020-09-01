@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import BookList from './components/BookList';
+import ApolloClient from 'apollo-boost'; 
+import { ApolloProvider } from 'react-apollo';
+import AddBook from './components/AddBook';
 
-function App() {
-  return (
-    <div className="App">
-      This is a simple react app
-    </div>
-  );
+//apollo client setup
+const clientEndPoint = new ApolloClient({
+  uri: 'http://localhost:4000/graphql'
+})
+
+class App extends Component {
+
+  render(){
+    return (
+      <ApolloProvider client={clientEndPoint}>
+        <div id="main">
+          <h1>Ninjas reading list</h1>
+          <BookList/>
+          <AddBook/>
+        </div>
+      </ApolloProvider>
+    );
+
+  }
 }
 
 export default App;
