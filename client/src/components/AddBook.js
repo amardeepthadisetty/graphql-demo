@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import * as compose from 'lodash.flowright';
-import { getAuthorsQuery, addBookMutation } from '../queiries/queiries';
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queiries/queiries';
 
 
 
@@ -18,7 +18,7 @@ class AddBook extends Component {
     displayAuthors(){
         //var data = this.props.data;
         var data = this.props.getAuthorsQuery;
-        console.log(" props data is: ", this.props);
+        //console.log(" props data is: ", this.props);
         if( data.loading ){
             return ( <option> Loading Books....!!!</option>)
         }else{
@@ -38,7 +38,8 @@ class AddBook extends Component {
                 name: this.state.name,
                 genre: this.state.genre,
                 authorId: this.state.authorId
-            }
+            },
+            refetchQueries:[{ query: getBooksQuery }]
         });
     }
 
