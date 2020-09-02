@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
+//import {  gql as graphql } from '@apollo/client';
 import * as compose from 'lodash.flowright';
 import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queiries/queiries';
 
